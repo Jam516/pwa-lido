@@ -12,30 +12,17 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
-
-function HeadBlock() {
-  return (
-    <div className="flex w-full justify-between px-3">
-      <LidoLogo />
-      <ConnectKitButton />
-    </div>
-  );
-}
 
 function TitleBlock() {
   return (
-    <><h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-      Stake ETH
-    </h1><p className="max-w-[700px] text-lg text-muted-foreground">
+    <div className="flex flex-col items-center pt-4">
+      <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+        Stake ETH
+      </h1><p className="max-w-[700px] text-lg text-muted-foreground">
         Stake ETH and receive stETH
-      </p></>
+      </p>
+    </div>
   );
 }
 
@@ -49,7 +36,10 @@ function StakeBlock() {
         </div>
       </CardContent>
       <CardFooter>
-        <p>You will receive</p>
+        <ul className="text-xs text-foreground/60">
+          <li>You will receive: 0 stETH</li>
+          <li>Exchange Rate: 1 ETH = 1 stETH</li>
+        </ul>
       </CardFooter>
     </Card>
   );
@@ -59,9 +49,9 @@ function StakeBlock() {
 export default function IndexPage() {
   return (
 
-    <div className="flex flex-col items-center gap-2 py-3 ">
+    <div className="flex flex-col items-center gap-6 py-3 ">
       {/* <DesktopBlocker /> */}
-      <HeadBlock />
+
       <TitleBlock />
       <StakeBlock />
     </div>

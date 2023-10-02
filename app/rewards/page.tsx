@@ -11,35 +11,17 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
-
-
-function HeadBlock() {
-    return (
-        <div className="flex w-full justify-between px-3">
-            <LidoLogo />
-            <ConnectKitButton />
-        </div>
-    );
-}
 
 function TitleBlock() {
     return (
-        <>
+        <div className="flex flex-col items-center pt-4">
             <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
                 Reward History
-            </h1>
-            <p className="max-w-[700px] text-lg text-muted-foreground">
-                Track your Ethereum staking rewards with Lido.
+            </h1><p className="max-w-[700px] text-lg text-muted-foreground">
+                Track your ETH staking rewards
+
             </p>
-        </>
+        </div>
     );
 }
 
@@ -48,10 +30,16 @@ function RewardsBlock() {
         <Card>
             <CardContent>
                 <div className="flex flex-col items-center gap-2 py-3 ">
-                    <Input />
-                    <Button>Check</Button>
+                    <h1 className="font-extrabold">Connect Wallet to see history</h1>
                 </div>
             </CardContent>
+            <CardFooter>
+                <ul className="text-xs text-foreground/60">
+                    <li>stETH Balance: 0 stETH</li>
+                    <li>stETH Rewarded: 0 stETH</li>
+                    <li>Average APR: 0%</li>
+                </ul>
+            </CardFooter>
         </Card>
     );
 }
@@ -60,9 +48,9 @@ function RewardsBlock() {
 export default function IndexPage() {
     return (
 
-        <div className="flex flex-col items-center gap-2 py-3 ">
+        <div className="flex flex-col items-center gap-6 py-3 ">
             {/* <DesktopBlocker /> */}
-            <HeadBlock />
+
             <TitleBlock />
             <RewardsBlock />
 

@@ -2,6 +2,7 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
 import { MainMenu } from "@/components/main-menu"
+import { LidoLogo } from "@/components/lidologo"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -14,6 +15,8 @@ import {
   ConnectKitButton,
   getDefaultConfig,
 } from "connectkit";
+
+import { DesktopBlocker } from "@/components/desktop-blocker"
 
 // export const metadata: Metadata = {
 //   title: {
@@ -46,6 +49,15 @@ const config = createConfig(
   })
 );
 
+function HeadBlock() {
+  return (
+    <div className="flex w-full justify-between px-3 pt-3">
+      <LidoLogo />
+      <ConnectKitButton />
+    </div>
+  );
+}
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
@@ -69,9 +81,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
 
           <div className="relative flex min-h-screen flex-col">
+            {/* <DesktopBlocker /> */}
             <div className="flex-1">
               <WagmiConfig config={config}>
                 <ConnectKitProvider>
+                  <HeadBlock />
                   {children}
                 </ConnectKitProvider>
               </WagmiConfig>
