@@ -54,7 +54,7 @@ function StakeBlock() {
 
   const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Update the input value state when the input changes
     setInputValue(event.target.value);
   };
