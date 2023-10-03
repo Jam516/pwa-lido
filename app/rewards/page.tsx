@@ -1,8 +1,4 @@
 "use client"
-import Link from "next/link"
-import { DesktopBlocker } from "@/components/desktop-blocker"
-import { LidoLogo } from "@/components/lidologo"
-import { ConnectKitButton } from "connectkit";
 import {
     Card,
     CardContent,
@@ -34,7 +30,7 @@ function RewardsBlock() {
                 </div>
             </CardContent>
             <CardFooter>
-                <ul className="text-xs text-foreground/60">
+                <ul className="text-sm text-foreground/60">
                     <li>stETH Balance: 0 stETH</li>
                     <li>stETH Rewarded: 0 stETH</li>
                     <li>Average APR: 0%</li>
