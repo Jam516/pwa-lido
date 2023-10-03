@@ -12,7 +12,12 @@ import { Button } from "@/components/ui/button"
 import { useAccount, useBalance } from "wagmi";
 import { Separator } from "@/components/ui/separator"
 import { useState, useEffect } from 'react';
-
+import { stethConfig } from '@/abi/abi'
+import {
+  useContractWrite,
+  usePrepareContractWrite
+} from "wagmi";
+import { parseEther } from 'viem'
 
 function TitleBlock() {
   return (
@@ -61,9 +66,14 @@ function StakeBlock() {
 
   const isNotNumber = isNaN(Number(inputValue));
 
-  function handleClick() {
-    console.log("clicked");
-  }
+  // If you have deployed a contract, use your own contract address!
+  const { config } = usePrepareContractWrite({
+    address: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+    abi: stethConfig.abi,
+    functionName: "submit",
+    value: parseEther(inputValue),
+  });
+  const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
   return (
     <Card>
@@ -87,7 +97,7 @@ function StakeBlock() {
           <Input placeholder="ETH Amount" value={inputValue}
             onChange={handleInputChange} />
           <Button
-            onClick={handleClick}
+            onClick={() => write?.()}
             className="w-full bg-blue-500	hover:bg-blue-400"
             disabled={
               inputValue === "" ||
