@@ -51,7 +51,7 @@ function StakeBlock() {
     isLoading: stethIsLoading,
   } = useBalance({
     address: address,
-    token: '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984',
+    token: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
     watch: true,
   });
 
@@ -66,11 +66,10 @@ function StakeBlock() {
 
   const isNotNumber = isNaN(Number(inputValue));
 
-  // If you have deployed a contract, use your own contract address!
   const { config } = usePrepareContractWrite({
     address: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
     abi: stethConfig.abi,
-    functionName: "submit",
+    functionName: "deposit",
     value: parseEther(inputValue),
   });
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
@@ -109,12 +108,17 @@ function StakeBlock() {
           </Button>
         </div>
       </CardContent>
-      {/* <CardFooter>
-        <ul className="text-xs text-foreground/60">
+      <CardFooter>
+        {Number(inputValue) > Number(ethBalance) && (
+          <div className="text-foreground/70">You dont have enough ETH...</div>
+        )}
+        {isLoading && <div className="text-foreground/70">Check Wallet</div>}
+        {isSuccess && <div className="text-foreground/70">Transaction: {JSON.stringify(data)}</div>}
+        {/* <ul className="text-xs text-foreground/60">
           <li>You will receive: 0 stETH</li>
           <li>Exchange Rate: 1 ETH = 1 stETH</li>
-        </ul>
-      </CardFooter> */}
+        </ul> */}
+      </CardFooter>
     </Card>
   );
 }

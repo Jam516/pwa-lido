@@ -31,14 +31,14 @@ export function MainMenu({
             </div>
             <div className="flex w-1/2 justify-center">
                 <Link
-                    href="/rewards"
+                    href="/wrap"
                     className={cn(
                         "flex flex-col items-center space-y-2",
                         segments === "bundlers" ? "text-foreground" : "text-foreground/60"
                     )}
                 >
-                    <img src="/wallet.png" alt="Rewards Icon" className="h-4 w-4" />
-                    <span className="text-xs font-medium transition-colors hover:text-primary">Rewards</span>
+                    <img src="/box.png" alt="Wrap Icon" className="h-4 w-4" />
+                    <span className="text-xs font-medium transition-colors hover:text-primary">Wrap</span>
                 </Link>
             </div>
         </nav>
