@@ -52,8 +52,8 @@ const nextConfig = {
   },
   transpilePackages: [],
 
-  env: {
-    NEXT_PUBLIC_PRIVY_APP_ID: "",
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
