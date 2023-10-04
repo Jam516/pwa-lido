@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { useAccount, useBalance } from "wagmi";
 import { Separator } from "@/components/ui/separator"
 import { useState, useEffect } from 'react';
-import { stethConfig } from '@/abi/abi'
+import { stethConfig } from '@/abi/stethabi'
 import {
   useContractWrite,
   usePrepareContractWrite
