@@ -78,7 +78,7 @@ function StakeBlock() {
     to: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
     value: parseEther(inputValue),
   });
-  const { data, isLoading, isSuccess, sendTransaction } =
+  const { data, isLoading, isSuccess, isError, sendTransaction } =
     useSendTransaction(config);
 
   if (!isMounted) return null;
@@ -123,6 +123,7 @@ function StakeBlock() {
         )}
         {isLoading && <div className="text-foreground/70">Check Wallet</div>}
         {isSuccess && <div className="text-foreground/70">Txn Successful!</div>}
+        {isError && <div className="text-foreground/70">Txn Failed!</div>}
         {/* <ul className="text-xs text-foreground/60">
           <li>You will receive: 0 stETH</li>
           <li>Exchange Rate: 1 ETH = 1 stETH</li>

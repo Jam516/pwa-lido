@@ -26,7 +26,7 @@ export function MainMenu({
                     )}
                 >
                     <img src="/thunder.png" alt="Stake Icon" className="w-a4 h-4" />
-                    <span className="text-xs font-medium transition-colors hover:text-primary">Stake</span>
+                    <span className="text-xs font-medium text-primary">Stake</span>
                 </Link>
             </div>
             <div className="flex w-1/2 justify-center">
@@ -38,7 +38,7 @@ export function MainMenu({
                     )}
                 >
                     <img src="/box.png" alt="Wrap Icon" className="h-4 w-4" />
-                    <span className="text-xs font-medium transition-colors hover:text-primary">Wrap</span>
+                    <span className="text-xs font-medium text-primary">Wrap</span>
                 </Link>
             </div>
         </nav>
