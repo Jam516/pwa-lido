@@ -69,7 +69,7 @@ function StakeBlock() {
   const { config } = usePrepareContractWrite({
     address: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
     abi: stethConfig.abi,
-    functionName: "deposit",
+    functionName: "submit",
     value: parseEther(inputValue),
   });
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
