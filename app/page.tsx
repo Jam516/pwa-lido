@@ -19,6 +19,12 @@ import {
 } from "wagmi";
 import { parseEther } from 'viem'
 
+export const useIsMounted = () => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted;
+};
+
 function TitleBlock() {
   return (
     <div className="flex flex-col items-center pt-4">
@@ -32,6 +38,8 @@ function TitleBlock() {
 }
 
 function StakeBlock() {
+  const isMounted = useIsMounted();
+
   const { address, isConnected } = useAccount();
 
   const {
@@ -73,6 +81,8 @@ function StakeBlock() {
     value: parseEther(inputValue),
   });
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
+
+  if (!isMounted) return null;
 
   return (
     <Card>
