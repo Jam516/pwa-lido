@@ -14,8 +14,8 @@ import { Separator } from "@/components/ui/separator"
 import { useState, useEffect } from 'react';
 import { stethConfig } from '@/abi/stethabi'
 import {
-  useContractWrite,
-  usePrepareContractWrite
+  useSendTransaction,
+  usePrepareSendTransaction,
 } from "wagmi";
 import { parseEther } from 'viem'
 
@@ -74,13 +74,12 @@ function StakeBlock() {
 
   const isNotNumber = isNaN(Number(inputValue));
 
-  const { config } = usePrepareContractWrite({
-    address: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
-    abi: stethConfig.abi,
-    functionName: "submit",
+  const { config } = usePrepareSendTransaction({
+    to: "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
     value: parseEther(inputValue),
   });
-  const { data, isLoading, isSuccess, write } = useContractWrite(config);
+  const { data, isLoading, isSuccess, sendTransaction } =
+    useSendTransaction(config);
 
   if (!isMounted) return null;
 
@@ -106,7 +105,7 @@ function StakeBlock() {
           <Input placeholder="ETH Amount" value={inputValue}
             onChange={handleInputChange} />
           <Button
-            onClick={() => write?.()}
+            onClick={() => sendTransaction?.()}
             className="w-full bg-blue-500	hover:bg-blue-400"
             disabled={
               inputValue === "" ||
@@ -123,7 +122,7 @@ function StakeBlock() {
           <div className="text-foreground/70">You dont have enough ETH...</div>
         )}
         {isLoading && <div className="text-foreground/70">Check Wallet</div>}
-        {isSuccess && <div className="text-foreground/70">Transaction: {JSON.stringify(data)}</div>}
+        {isSuccess && <div className="text-foreground/70">Txn Successful!</div>}
         {/* <ul className="text-xs text-foreground/60">
           <li>You will receive: 0 stETH</li>
           <li>Exchange Rate: 1 ETH = 1 stETH</li>

@@ -100,7 +100,7 @@ function WrapBlock() {
         args: ["0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0", parseEther(inputValue)],
     });
     //switch to use parseunits instead of parseether!!!!
-    const { data, isLoading, isSuccess, write } = useContractWrite(config);
+    const { data, isLoading, isSuccess, isError, write } = useContractWrite(config);
 
     if (!isMounted) return null;
 
@@ -143,7 +143,8 @@ function WrapBlock() {
                     <div className="text-foreground/70">You dont have enough ETH...</div>
                 )}
                 {isLoading && <div className="text-foreground/70">Check Wallet</div>}
-                {isSuccess && <div className="text-foreground/70">Transaction: {JSON.stringify(data)}</div>}
+                {isSuccess && <div className="text-foreground/70">Txn Successful!</div>}
+                {isError && <div className="text-foreground/70">Txn Failed!</div>}
                 {/* <ul className="text-xs text-foreground/60">
             <li>You will receive: 0 stETH</li>
             <li>Exchange Rate: 1 ETH = 1 stETH</li>
